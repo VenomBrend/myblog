@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block posts %}
+    {% if posts %}
+        <ul><h1>
+            {% for post in posts %}
+            <li>{{ post.title }}</li>
+            {% endfor %}
+        </h1></ul>
+    {% else %}
+        <h1 align="center">There aren't any post. Let's write something... </h1>
+    {% endif %}
+{% endblock %}
