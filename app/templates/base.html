@@ -7,48 +7,97 @@
     <link rel=stylesheet type=text/css href="{{ url_for('static', filename='test_style.css') }}">
 </head>
 <body>
-<div class="wrapper">
-	<header class="header">
-        {% if not session.logged_in %}
-            <ul>
-                <li><a href="{{ url_for('index') }}">Home</a></li>
-                <li><a href="{{ url_for('login')}}">LogIn</a></li>
-            </ul>
-        {% else %}
-            <ul>
-                <li><a href="">Home</a></li>
-                <li><a href="{{ url_for('logout') }}">LogOut</a></li>
-                <li><a href="">Posts</a></li>
-                <li><a href="">New post</a></li>
-            </ul>
-        {% endif %}
-	</header><!-- .header-->
 
-	<div class="middle">
-        {% block loggin%}
-            <!--log page-->
-        {% endblock %}
 
-		<div class="container">
-			<main class="content">
-				{% block posts %}
-                    <!-- all posts here -->
-                {% endblock %}
 
-			</main><!-- .content -->
-		</div><!-- .container-->
 
-		<aside class="right-sidebar">
-			<strong>Right Sidebar:</strong> Integer velit. Vestibulum nisi nunc, accumsan ut, vehicula sit amet, porta a, mi. Nam nisl tellus, placerat eget, posuere eget, egestas eget, dui. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In elementum urna a eros. Integer iaculis. Maecenas vel elit.
-		</aside><!-- .right-sidebar -->
+<div id="outer">
 
-	</div><!-- .middle-->
+    <div id="upbg"></div>
 
-</div><!-- .wrapper -->
+    <div id="inner">
 
-<footer class="footer">
-    <p>something...</p>
-</footer><!-- .footer -->
+        <div id="header">
+            <h1><span>terra</span>firma<sup>1.0</sup></h1>
+            <h2>by nodethirtythree</h2>
+        </div>
+
+        <div id="splash"></div>
+    
+        <div id="menu">
+            {% if not session.logged_in %}
+                <ul>
+                    <li><a href="{{ url_for('index') }}">Home</a></li>
+                    <li><a href="{{ url_for('login') }}">LogIn</a></li>
+                </ul>
+            {% else %}
+                <ul>
+                    <li><a href="{{ url_for('index') }}">Home</a></li>
+                    <li><a href="">Posts</a></li>
+                    <li><a href="{{ url_for('add_post') }}">Add post</a></li>
+                    <li><a href="{{ url_for('logout') }}">LogOut</a></li>                    
+                </ul>
+            {% endif %}
+
+        <div id="date">August 1, 2006</div>
+        </div>
+    
+
+
+
+        <div id="primarycontent">
+        
+            <!-- primary content start -->
+            {% block loggin%}
+                    <!--log page-->
+            {% endblock %}
+            
+            {% block posts %}
+                <!-- all posts here -->
+                <!-- add new post here-->
+            {% endblock %}
+
+        </div>
+
+
+        
+        <div id="secondarycontent">
+
+            <!-- secondary content start -->
+        
+            <h3>About Me</h3>
+            <div class="content">
+                <img src="images/pic2.jpg" class="picB" alt="" />
+                <p><strong>Nullam turpis</strong> vestibulum et sed dolore. Nulla facilisi. Sed tortor. lobortis commodo. <a href="#">More ...</a></p>
+            </div>
+            
+            <h3>Topics</h3>
+            <div class="content">
+                <ul class="linklist">
+                    <li class="first"><a href="#">Accumsan congue (32)</a></li>
+                    <li><a href="#">Dignissim nec augue (14)</a></li>
+                    <li><a href="#">Nunc ante elit nulla (83)</a></li>
+                    <li><a href="#">Aliquam suscipit (74)</a></li>
+                    <li><a href="#">Cursus sed arcu sed (14)</a></li>
+                    <li><a href="#">Eu ante cras at risus (24)</a></li>
+                    <li><a href="#">Donec mollis dolore (39)</a></li>
+                    <li><a href="#">Aliquam suscipit (74)</a></li>
+                </ul>
+            </div>
+
+            <!-- secondary content end -->
+
+        </div>
+    
+        <div id="footer">
+        
+            &copy; My Website. All rights reserved. Design by <a href="http://www.nodethirtythree.com/">NodeThirtyThree</a>.
+        
+        </div>
+
+    </div>
+
+</div>
 
 </body>
 </html>
