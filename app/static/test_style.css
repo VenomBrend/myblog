@@ -314,7 +314,11 @@ background-position: 0px 2px;
 
 #primarycontent .post .footer ul li.printerfriendly
 {
+<<<<<<< HEAD
 background-image: url('images/a41.png');
+=======
+background-image: url('images/a41.gif');
+>>>>>>> 0b07e3c036c097cdd4aaecc6170f4c8f27c002f4
 }
 
 #primarycontent .post .footer ul li.comments
