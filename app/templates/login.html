@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block loggin %}
-  <h2>Login</h2>
+  <h1>Login</h1>
   {% if error %}<p class=error><strong>Error:</strong> {{ error }}{% endif %}
   <form action="{{ url_for('login') }}" method=post>
     <dl>

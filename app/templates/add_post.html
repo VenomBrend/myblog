@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block posts %}
+    <h1>Add new post</h1>
+
+    <form action="{{ url_for('add_post') }}" method=post>
+        <div>
+            <input type="text" col="60" placeholder="Post title" name="post-title">
+            <textarea name="post-short" cols="60" rows="3" placeholder="Short text"></textarea>
+            <textarea name="post-full" cols="60" rows="15" placeholder="Full text"></textarea>
+            <input type="submit" value="Submit">
+        </div>
+    </form>
+
+{% endblock %}

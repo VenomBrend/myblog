@@ -9,14 +9,16 @@
                 <div class="post">
                     <div class="header">
                         <h3><a href="posts/{{ post.slug }}"> {{post.title }} </a></h3>
-                        <div class="date">August 1, 2006</div>
+                        <div class="date">Posted on  {{ post.timestamp }}</div>
                     </div>
                     <div class="content">
-                        <p> {{post.short_text }} </p>
+                        {% if post.short_text %}
+                            <p> {{post.short_text }} </p>
+                        {% endif %}
                     </div>          
                     <div class="footer">
                         <ul>
-                            <li class="printerfriendly"><a href="#">Printer Friendly</a></li>
+                            <li class="printerfriendly"><a href="#">Edit post</a></li>
                             <li class="comments"><a href="#">Comments (18)</a></li>
                             <li class="readmore"><a href="posts/{{ post.slug }}">Read more</a></li>
                         </ul>
@@ -26,5 +28,5 @@
         {% else %}
             <h1 align="center">There aren't any post. Let's write something... </h1>
         {% endif %}
-     </ul>
+    </ul>
 {% endblock %}

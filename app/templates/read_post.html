@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block posts %}
+    <div>
+        {% if posts %}
+            {% for post in posts %}
+                <div class="post">
+                    <div class="header">
+                        <h3> {{post.title }} </h3>
+                        <div class="date">August 1, 2006</div>
+                    </div>
+                    <div class="content">
+                        <div> {{post.full_text }} </div>
+                    </div>
+                 </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+{% endblock %}
