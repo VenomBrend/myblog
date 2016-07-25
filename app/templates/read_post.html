@@ -10,10 +10,11 @@
                         <div class="date">August 1, 2006</div>
                     </div>
                     <div class="content">
-                        <div> {{post.full_text }} </div>
+                        <p> {{ post.full_text | safe}} </p>
                     </div>
                  </div>
             {% endfor %}
         {% endif %}
     </div>
 {% endblock %}
+

@@ -8,8 +8,7 @@
 
                 <div class="post">
                     <div class="header">
-                        <h3><a href="posts/{{ post.slug }}"> {{post.title }} </a></h3>
-<<<<<<< HEAD
+                        <h3><a href="posts/{{ post.slug }}"> {{ post.title }} </a></h3>
                         <div class="date">Posted on  {{ post.timestamp }}</div>
                     </div>
                     <div class="content">
@@ -19,17 +18,9 @@
                     </div>          
                     <div class="footer">
                         <ul>
-                            <li class="printerfriendly"><a href="#">Edit post</a></li>
-=======
-                        <div class="date">August 1, 2006</div>
-                    </div>
-                    <div class="content">
-                        <p> {{post.short_text }} </p>
-                    </div>          
-                    <div class="footer">
-                        <ul>
-                            <li class="printerfriendly"><a href="#">Printer Friendly</a></li>
->>>>>>> 0b07e3c036c097cdd4aaecc6170f4c8f27c002f4
+                            {% if session.logged_in %}
+                            <li class="printerfriendly"><a href="/edit_post/{{ post,slug }}">Edit post</a></li>
+                            {% endif %}
                             <li class="comments"><a href="#">Comments (18)</a></li>
                             <li class="readmore"><a href="posts/{{ post.slug }}">Read more</a></li>
                         </ul>
@@ -39,9 +30,5 @@
         {% else %}
             <h1 align="center">There aren't any post. Let's write something... </h1>
         {% endif %}
-<<<<<<< HEAD
     </ul>
-=======
-     </ul>
->>>>>>> 0b07e3c036c097cdd4aaecc6170f4c8f27c002f4
 {% endblock %}
