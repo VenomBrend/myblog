@@ -9,7 +9,8 @@
                 <div class="post">
                     <div class="header">
                         <h3><a href="posts/{{ post.slug }}"> {{ post.title }} </a></h3>
-                        <div class="date">Posted on  {{ post.timestamp }}</div>
+                        <div class="date"><br>Posted on  {{ post.timestamp }}</div>
+                        
                     </div>
                     <div class="content">
                         {% if post.short_text %}
@@ -19,10 +20,10 @@
                     <div class="footer">
                         <ul>
                             {% if session.logged_in %}
-                            <li class="printerfriendly"><a href="/edit_post/{{ post,slug }}">Edit post</a></li>
+                            <li class="printerfriendly"><a href="edit_post/{{ post.slug }}">Edit post</a></li>
                             {% endif %}
-                            <li class="comments"><a href="#">Comments (18)</a></li>
-                            <li class="readmore"><a href="posts/{{ post.slug }}">Read more</a></li>
+                            <!--<li class="comments"><a href="#">Comments (18)</a></li>-->
+                            <li class="readmore"><a href="/posts/{{ post.slug }}">Read more</a></li>
                         </ul>
                     </div>
                 </div>

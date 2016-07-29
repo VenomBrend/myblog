@@ -42,26 +42,35 @@ def logout():
     return redirect(url_for('index'))
 
 
-@app.route('/add_post', methods={'GET', 'POST'})
+@app.route('/add_post', methods=['GET', 'POST'])
 def add_post():
     if not session.get('logged_in'):
         abort(401)
     if request.method == 'POST':
         db = database.get_db()
-        current_data = str(datetime.today())[:19]
+        current_data = str(datetime.today())[:19] #format yyyy-mm-dd hh-mm-ss
         db.execute("insert into entries (slug, title, short_text, full_text, timestamp) values (?, ?, ?, ?, ?)",
                    ['post '+current_data, request.form['post-title'], request.form['post-short'],
                     request.form['post-full'], current_data])
         db.commit()
         flash('New entry was successfully posted')
         return redirect('index')
-    return render_template('add_post.html')
+    return render_template('add_post.html', title_page='Add new post')
 
 
 @app.route('/edit_post/<slug_post>', methods=['GET', 'POST'])
 def edit_post(slug_post):
     db = database.get_db()
-    return redirect('index')
+    sql_query = "select * from entries where entries.slug='{0}'".format(slug_post)
+    cur = db.execute(sql_query)
+    post = cur.fetchall()
+    if request.method == 'POST':
+        db.execute("update entries set title=?, short_text=?, full_text=? where slug=?", [request.form['post-title'], 
+            request.form['post-short'], request.form['post-full'], slug_post])
+        db.commit()
+        return redirect(url_for('index'))
+    return render_template('edit_post.html', post=post)
+
 
 
 
