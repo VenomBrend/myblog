@@ -5,5 +5,6 @@ create table entries (
     title text,
     short_text text,
     full_text text,
-    timestamp text
+    timestamp text,
+    audio text
 );

@@ -11,7 +11,7 @@
         <div>
             <input  name="post-title" type="text" col="60" value="{{ rec.title }}">
             <textarea name="post-short" cols="60" rows="3">{{ rec.short_text }}</textarea>
-            <textarea name="post-full" cols="60" rows="15">{{ rec.full_text }}</textarea>
+            <textarea id="mytextarea" name="post-full" cols="60" rows="15">{{ rec.full_text }}</textarea>
             <input type="submit" value="Submit">
         </div>
     </form>

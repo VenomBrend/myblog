@@ -5,10 +5,28 @@
 	<title>{% block title %}{% endblock%}</title>
 	<meta name="description" content="" />
     <link rel=stylesheet type=text/css href="{{ url_for('static', filename='test_style.css') }}">
+
+    <script src='//cdn.tinymce.com/4/tinymce.min.js'></script>
+
+
+
+    <script>
+        tinymce.init({
+            selector: '#mytextarea',
+            plugins: 'link image ',
+            menubar: false,
+            toolbar: [
+                'styleselect | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify',
+                'bullist numlist | blockquote | link unlink | image quickimage'
+                        ]
+        });
+    </script>
+
+
+
+
 </head>
 <body>
-
-
 
 
 <div id="outer">
@@ -58,7 +76,6 @@
 
         </div>
 
-
         
         <div id="secondarycontent">
 
@@ -79,7 +96,7 @@
     
         <div id="footer">
         
-            &copy; My Website. All rights reserved</a>.
+            &copy; MyBlog 2016</a>.
         
         </div>
 

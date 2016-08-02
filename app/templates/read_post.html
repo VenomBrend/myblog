@@ -7,10 +7,15 @@
                 <div class="post">
                     <div class="header">
                         <h3> {{post.title }} </h3>
-                        <!--<div class="date">August 1, 2006</div>-->
                     </div>
                     <div class="content">
+                        <h4>{{ post.short_text }}</h4>
+                        <br>
                         <p> {{ post.full_text | safe}} </p>
+                        <audio controls>
+                            <source src="{{audio_dir}}/{{post.audio}}" type="audio/mpeg">
+                        </audio>
+
                     </div>
                  </div>
             {% endfor %}

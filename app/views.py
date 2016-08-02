@@ -1,12 +1,12 @@
 from app import app
 import database
-
-
 from app import app
 from sqlite3 import dbapi2 as sqlite3
 from flask import request, session, g, redirect, url_for, abort, \
     render_template, flash
 from datetime import datetime
+import os
+from werkzeug.utils import secure_filename
 
 
 
@@ -49,9 +49,16 @@ def add_post():
     if request.method == 'POST':
         db = database.get_db()
         current_data = str(datetime.today())[:19] #format yyyy-mm-dd hh-mm-ss
-        db.execute("insert into entries (slug, title, short_text, full_text, timestamp) values (?, ?, ?, ?, ?)",
+        #Uploading audio files
+        audio_file = request.files['upload-audio']
+        audio_filename = ''
+        if audio_file.filename != '':
+            audio_filename = secure_filename(audio_file.filename)
+            audio_file.save(os.path.join(app.config['UPLOAD_AUDIO'], audio_filename))
+
+        db.execute("insert into entries (slug, title, short_text, full_text, timestamp, audio) values (?, ?, ?, ?, ?, ?)",
                    ['post '+current_data, request.form['post-title'], request.form['post-short'],
-                    request.form['post-full'], current_data])
+                    request.form['post-full'], current_data, audio_filename])
         db.commit()
         flash('New entry was successfully posted')
         return redirect('index')
@@ -81,4 +88,4 @@ def read_post(slug_post):
     sql_query  = "select * from entries where entries.slug='{0}'".format(slug_post)
     cur = db.execute(sql_query)
     post = cur.fetchall()
-    return render_template("read_post.html", posts=post)
+    return render_template("read_post.html", posts=post, audio_dir=app.config['UPLOAD_AUDIO'])

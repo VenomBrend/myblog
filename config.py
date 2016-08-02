@@ -3,9 +3,11 @@ import os
 
 
 CSRF_ENABLED = True
-SECRET_KEY = 'you-will-never-guess'
+SECRET_KEY = 'ldsjfpdljafsafjosdoja3498ew'
 
-DATABASE = os.path.join(app.root_path, 'data/myblog.db')
+DATABASE = os.path.join(app.root_path, 'data', 'myblog.db')
+UPLOAD_AUDIO = os.path.join(app.root_path, 'data', 'audio')
+UPLOAD_IMAGE = os.path.join(app.root_path, 'data', 'img')
 
 USERNAME = "admin"
 PASSWORD = "admin"
