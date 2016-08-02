@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+<!-- Page for-->
+{% block posts %}
+
+    <h1>Add post</h1>
+
+    <form action="{{ url_for('add_post') }}" method=post enctype=multipart/form-data>
+        <div>
+            <input type="text" width="100%" placeholder="Post title" name="post-title">
+            <textarea name="post-short" cols="60" rows="3" placeholder="Short text"></textarea>
+            <textarea id="mytextarea" name="post-full" cols="60" rows="15" placeholder="Full text"></textarea>
+            <fieldset>
+                <legend>
+                    <p>Upload audio file here</p>
+                </legend>
+                <input type="file" name="upload-audio" value="No file selected" accept="audio/mpeg">
+            </fieldset>
+            <input type="submit" value="Submit">
+        </div>
+    </form>
+
+
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+<!-- Page for-->
+{% block posts %}
+    <h1>Edit post</h1>
+
+
+{% for rec in post %}
+
+
+    <form action="{{ url_for('edit_post', slug_post=rec.slug) }}" method=post>
+        <div>
+            <input  name="post-title" type="text" col="60" value="{{ rec.title }}">
+            <textarea name="post-short" cols="60" rows="3">{{ rec.short_text }}</textarea>
+            <textarea id="mytextarea" name="post-full" cols="60" rows="15">{{ rec.full_text }}</textarea>
+            <input type="submit" value="Submit">
+        </div>
+    </form>
+
+{% endfor %}
+
+
+
+
+
+
+{% endblock %}
