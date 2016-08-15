@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>{% block title %}{% endblock%}</title>
+	<meta name="description" content="" />
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='test_style.css') }}">
+
+
+    <script src='//cdn.tinymce.com/4/tinymce.min.js'></script>
+
+
+
+    <script>
+        tinymce.init({
+            selector: '#mytextarea',
+            plugins: 'link image ',
+            menubar: false,
+            toolbar: [
+                'styleselect | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify',
+                'bullist numlist | blockquote | link unlink | image quickimage'
+                        ]
+        });
+    </script>
+
+
+
+
+</head>
+<body>
+
+
+<div id="outer">
+
+    <div id="upbg"></div>
+
+    <div id="inner">
+
+        <div id="header">
+            <!--<h1><span>terra</span>firma<sup>1.0</sup></h1>-->
+            <!--<h2>by nodethirtythree</h2>-->
+        </div>
+
+        <div id="splash"></div>
+    
+        <div id="menu">
+            {% if not session.logged_in %}
+                <ul>
+                    <li><a href="{{ url_for('index') }}">Home</a></li>
+                    <li><a href="{{ url_for('login') }}">Log in</a></li>
+                </ul>
+            {% else %}
+                <ul>
+                    <li><a href="{{ url_for('index') }}">Home</a></li>
+                    <!--<li><a href="">Posts</a></li>-->
+                    <li><a href="{{ url_for('add_post') }}">Add post</a></li>
+                    <li><a href="{{ url_for('logout') }}">Log out</a></li>
+                </ul>
+            {% endif %}
+        </div>
+    
+
+
+
+        <div id="primarycontent">
+        
+            <!-- primary content start -->
+            {% block loggin%}
+                    <!--log page-->
+            {% endblock %}
+            
+            {% block posts %}
+                <!-- all posts here -->
+                <!-- add new post here-->
+                <!-- read one page-->
+            {% endblock %}
+
+        </div>
+
+        
+        <div id="secondarycontent">
+
+            <!-- secondary content start -->
+        
+           
+            <h3>Top tags</h3>
+            <div class="content">
+                <ul class="linklist">
+                    <!--tags here-->
+
+                </ul>
+            </div>
+
+            <!-- secondary content end -->
+
+        </div>
+    
+        <div id="footer">
+        
+            &copy; MyBlog 2016</a>.
+        
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

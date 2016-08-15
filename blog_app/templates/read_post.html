@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block posts %}
+    <div>
+        {% if posts %}
+            {% for post in posts %}
+                <div class="post">
+                    <div class="header">
+                        <h3> {{post.title }} </h3>
+                    </div>
+                    <div class="content">
+                        <h4>{{ post.short_text }}</h4>
+                        <br>
+                        <p> {{ post.full_text | safe}} </p>
+
+                        {% if post.audio %}
+                            <audio controls>
+                                <source src="" type="audio/mp3">
+                            </audio>
+                        {% endif %}
+
+                    </div>
+                 </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+{% endblock %}
+
