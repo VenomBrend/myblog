@@ -7,7 +7,7 @@ from flask import request, session, g, redirect, url_for, abort, \
 from datetime import datetime
 import os
 from werkzeug.utils import secure_filename
-
+from config import UPLOAD_AUDIO
 
 
 @app.route('/')
@@ -88,4 +88,4 @@ def read_post(slug_post):
     sql_query  = "select * from entries where entries.slug='{0}'".format(slug_post)
     cur = db.execute(sql_query)
     post = cur.fetchall()
-    return render_template("read_post.html", posts=post, audio_dir=app.config['UPLOAD_AUDIO'])
+    return render_template("read_post.html", posts=post, audio_dir=UPLOAD_AUDIO+'/')
